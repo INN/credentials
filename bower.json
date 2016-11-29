@@ -1,0 +1,18 @@
+{
+  "name": "subject-expertise-bios",
+  "description": "Taxonomy-specific bios for post authors",
+  "license": "GPLv2",
+  "authors": [
+    "inn_nerds"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "generator-plugin-wp": {
+    "name": "Subject Expertise Bios",
+    "homepage": "http://webdevstudios.com",
+    "description": "Taxonomy-specific bios for post authors",
+    "version": "1.0.0",
+    "author": "inn_nerds",
+    "authoremail": "nerds@inn.org",
+    "authorurl": "http://nerds.inn.org",
+    "license": "GPLv2",
+    "slug": "subject-expertise-bios",
+    "classname": "Subject_Expertise_Bios",
+    "classprefix": "SEB_",
+    "prefix": "subject_expertise_bios",
+    "year": 2016,
+    "currentVersionWP": "4.6.1"
+  }
+}
