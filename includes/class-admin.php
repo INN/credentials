@@ -54,6 +54,7 @@ class SEB_Admin {
 	 * @since    1.0.0
 	 */
 	public function settings_page() {
+		echo 'settings page';
 	}
 
 	/**
@@ -63,7 +64,6 @@ class SEB_Admin {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'admin_init', array( $this, 'settings_init' ) );
 		add_action( 'admin_menu', array( $this, 'submenu_page' ) );
 	}
 }
