@@ -117,6 +117,14 @@ final class Subject_Expertise_Bios {
 	protected static $single_instance = null;
 
 	/**
+	 * Instance of SEB_Admin
+	 *
+	 * @since NEXT
+	 * @var SEB_Admin
+	 */
+	protected $admin;
+
+	/**
 	 * Creates or returns an instance of this class.
 	 *
 	 * @since  NEXT
@@ -149,7 +157,7 @@ final class Subject_Expertise_Bios {
 	 */
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
-		// $this->plugin_class = new SEB_Plugin_Class( $this );
+		$this->admin = new SEB_Admin( $this );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
@@ -300,6 +308,7 @@ final class Subject_Expertise_Bios {
 			case 'basename':
 			case 'url':
 			case 'path':
+			case 'admin':
 				return $this->$field;
 			default:
 				throw new Exception( 'Invalid ' . __CLASS__ . ' property: ' . $field );
