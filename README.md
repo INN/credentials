@@ -1,4 +1,8 @@
 # Subject Expertise Bios #
+**This plugin is still in development and is not recommended for use on production sites*
+
+This plugin was created as a part of the [Trust Project Challenge](http://www.bbc.co.uk/connectedstudio/events/trust-project-challenge) hosted by the BBC Connected Studio in Fall 2016 as a collaboration between INN and BBC team members.
+
 **Contributors:**      inn_nerds  
 **Donate link:**
 **Tags:**  
@@ -28,9 +32,9 @@ Taxonomy-specific bios for post authors
 ## Changelog ##
 
 ### 1.0.0 ###
-* First release
+* First release (forthcoming)
 
 ## Upgrade Notice ##
 
 ### 1.0.0 ###
-First Release
+First Release (forthcoming)
