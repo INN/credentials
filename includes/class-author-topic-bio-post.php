@@ -109,7 +109,6 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 			'before_title'  => $args['before_title'],
 			'after_title'   => $args['after_title'],
 			'title'         => $instance['title'],
-			'text'          => $instance['text'],
 		) );
 	}
 
@@ -133,7 +132,6 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 				'before_title'  => '',
 				'after_title'   => '',
 				'title'         => '',
-				'text'          => '',
 			),
 			(array) $atts,
 			self::$shortcode
@@ -145,16 +143,11 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		// Title.
 		$widget .= ( $atts['title'] ) ? $atts['before_title'] . esc_html( $atts['title'] ) . $atts['after_title'] : '';
 
-		$widget .= wpautop( wp_kses_post( $atts['text'] ) );
-
-		// After widget hook.
-		$widget .= $atts['after_widget'];
-
 		$post_categories =  wp_get_post_categories( $post->ID );
 
 		$author = get_userdata( $post->post_author );
 		$widget .= '<div itemscope itemtype="http://schema.org/Person">';
-		$widget .= '<div itemprop="name">' . $author->first_name . ' ' . $author->last_name . '</div>';
+		$widget .= '<div itemprop="name"><strong>' . $author->first_name . ' ' . $author->last_name . '</strong></div>';
 			foreach ( $post_categories as $category ) {
 				$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
 				if ( $meta ) {
@@ -163,6 +156,9 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 				}
 			}
 		$widget .= '</div>';
+
+		// After widget hook.
+		$widget .= $atts['after_widget'];
 
 		return $widget;
 	}
@@ -184,13 +180,6 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		// Sanitize title before saving to database.
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
-		// Sanitize text before saving to database.
-		if ( current_user_can( 'unfiltered_html' ) ) {
-			$instance['text'] = force_balance_tags( $new_instance['text'] );
-		} else {
-			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes( $new_instance['text'] ) ) );
-		}
-
 		// Flush cache.
 		$this->flush_widget_cache();
 
@@ -209,17 +198,12 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance,
 			array(
 				'title' => $this->default_widget_title,
-				'text'  => '',
 			)
 		);
 
 		?>
 		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'subject-expertise-bios' ); ?></label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" placeholder="optional" /></p>
-
-		<p><label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text:', 'subject-expertise-bios' ); ?></label>
-		<textarea class="widefat" rows="16" cols="20" id="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'text' ) ); ?>"><?php echo esc_textarea( $instance['text'] ); ?></textarea></p>
-		<p class="description"><?php esc_html_e( 'Basic HTML tags are allowed.', 'subject-expertise-bios' ); ?></p>
 		<?php
 	}
 }
