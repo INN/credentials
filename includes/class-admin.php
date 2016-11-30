@@ -80,7 +80,8 @@ class SEB_Admin {
 					<td>
 						<select name="category" id="category">
 							<?php
-							foreach ( get_categories() as $category ) {
+							$args = array( "hide_empty" => 0 );
+							foreach ( get_categories( $args ) as $category ) {
 								echo '<option value=' . $category->term_id . '>' . $category->name . '</option>';
 							}
 							?>
