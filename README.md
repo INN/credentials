@@ -32,9 +32,9 @@ Taxonomy-specific bios for post authors
 ## Changelog ##
 
 ### 1.0.0 ###
-* First release
+* First release (forthcoming)
 
 ## Upgrade Notice ##
 
 ### 1.0.0 ###
-First Release
+First Release (forthcoming)
