@@ -66,8 +66,13 @@ class SEB_Admin {
 						$row_class = 'odd';
 					}
 
-					echo '<tr class="odd">';
-						echo '<td class="category column-category" data-colname="Category" name="' . $category_id . '">' . $category->name . '</td>';
+					echo '<tr class="' . $row_class .'">';
+						echo '<td class="category column-category" data-colname="Category" name="' . $category_id . '">';
+							echo '<strong><a href="/wp-admin/term.php?taxonomy=category&tag_ID=' . $category_id . '&post_type=post">' . $category->name . '</a></strong>';
+							echo '<div class="row-actions">';
+							echo '<span class="trash"><a href="' . @TODO . '" class="submitdelete" aria-label="Delete This Data">Remove</a></span>';
+							echo '</div>';
+						echo '</td>';
 						echo '<td class="biography column-biography" data-colname="Biography">' . $bio->meta_value . '</td>';
 					echo '</tr>';
 				} ?>
