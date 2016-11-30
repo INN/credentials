@@ -133,7 +133,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 			}
 		}
 
-		if ( empty( count( $bios ) ) ) {
+		if ( empty( count( $bios ) ) || ! is_single() ) {
 			return;
 		}
 
