@@ -61,8 +61,8 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 */
 	public function __construct() {
 
-		$this->widget_name          = esc_html__( 'Subject Expertise Bios Author Topic Bio (post)', 'subject-expertise-bios' );
-		$this->default_widget_title = esc_html__( 'Subject Expertise Bios Author Topic Bio (post)', 'subject-expertise-bios' );
+		$this->widget_name          = esc_html__( 'Subject Expertise Post Bios', 'subject-expertise-bios' );
+		$this->default_widget_title = esc_html__( 'Subject Expertise Post Bios', 'subject-expertise-bios' );
 
 		parent::__construct(
 			$this->widget_slug,
@@ -123,6 +123,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 */
 	public static function get_widget( $atts ) {
 		$widget = '';
+		global $post;
 
 		// Set up default values for attributes.
 		$atts = shortcode_atts(
@@ -148,6 +149,15 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 
 		// After widget hook.
 		$widget .= $atts['after_widget'];
+
+		$post_categories =  wp_get_post_categories( $post->ID );
+		foreach ( $post_categories as $category ) {
+			$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
+			if ( $meta ) {
+				$bios[] = $meta;
+				echo $meta;
+			}
+		}
 
 		return $widget;
 	}
