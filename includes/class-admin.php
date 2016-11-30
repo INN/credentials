@@ -39,7 +39,13 @@ class SEB_Admin {
 	 */
 	public function profile_expertise_display( $user ) {
 		global $wpdb;
-		$taxonomy_bios = $wpdb->get_results( "SELECT * FROM $wpdb->usermeta WHERE meta_key LIKE 'term_%_bio'" );
+		
+		if ( isset( $_GET['user_id'] ) ) {
+			$user_id = $_GET['user_id'];
+		} else {
+			$user_id = get_current_user_id();
+		}
+		$taxonomy_bios = $wpdb->get_results( "SELECT * FROM $wpdb->usermeta WHERE meta_key LIKE 'term_%_bio' AND user_id LIKE $user_id" );
 
 		?>
 		<h3>Subject Expertise</h3>

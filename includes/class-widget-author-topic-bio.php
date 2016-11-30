@@ -136,7 +136,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 			}
 		}
 
-		if ( empty( count( $bios ) ) ) {
+		if ( empty( count( $bios ) ) || ! is_author() ) {
 			return;
 		}
 
