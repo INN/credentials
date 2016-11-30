@@ -11,7 +11,7 @@
  *
  * @since NEXT
  */
-class SEB_Author_Topic_Bio_(post) extends WP_Widget {
+class SEB_Author_Topic_Bio_post extends WP_Widget {
 
 	/**
 	 * Unique identifier for this widget.
@@ -217,6 +217,6 @@ class SEB_Author_Topic_Bio_(post) extends WP_Widget {
  * @return void
  */
 function subject_expertise_bios_register_undefined() {
-	register_widget( 'SEB_Author_Topic_Bio_(post)' );
+	register_widget( 'SEB_Author_Topic_Bio_post' );
 }
 add_action( 'widgets_init', 'subject_expertise_bios_register_undefined' );
