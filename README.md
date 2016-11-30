@@ -1,4 +1,6 @@
 # Subject Expertise Bios #
+This plugin was created as a part of the [Trust Project Challenge](http://www.bbc.co.uk/connectedstudio/events/trust-project-challenge) hosted by the BBC Connected Studio in Fall 2016 as a collaboration between INN and BBC team members.
+
 **Contributors:**      inn_nerds  
 **Donate link:**
 **Tags:**  
