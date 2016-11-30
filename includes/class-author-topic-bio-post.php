@@ -151,13 +151,18 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		$widget .= $atts['after_widget'];
 
 		$post_categories =  wp_get_post_categories( $post->ID );
-		foreach ( $post_categories as $category ) {
-			$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
-			if ( $meta ) {
-				$bios[] = $meta;
-				echo $meta;
+
+		$author = get_userdata( $post->post_author );
+		$widget .= '<div itemscope itemtype="http://schema.org/Person">';
+		$widget .= '<div itemprop="name">' . $author->first_name . ' ' . $author->last_name . '</div>';
+			foreach ( $post_categories as $category ) {
+				$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
+				if ( $meta ) {
+					$bios[] = $meta;
+					$widget .= '<div itemprop="description">' . $meta . '</div>';
+				}
 			}
-		}
+		$widget .= '</div>';
 
 		return $widget;
 	}
