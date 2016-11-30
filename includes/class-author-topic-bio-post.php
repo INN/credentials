@@ -124,6 +124,19 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		$widget = '';
 		global $post;
 
+		$post_categories =  wp_get_post_categories( $post->ID );
+
+		foreach ( $post_categories as $category ) {
+			$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
+			if ( $meta ) {
+				$bios[] = $meta;
+			}
+		}
+
+		if ( empty( count( $bios ) ) ) {
+			return;
+		}
+
 		// Set up default values for attributes.
 		$atts = shortcode_atts(
 			array(
@@ -143,18 +156,13 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		// Title.
 		$widget .= ( $atts['title'] ) ? $atts['before_title'] . esc_html( $atts['title'] ) . $atts['after_title'] : '';
 
-		$post_categories =  wp_get_post_categories( $post->ID );
 
 		$author = get_userdata( $post->post_author );
 		$widget .= '<div itemscope itemtype="http://schema.org/Person">';
 		$widget .= '<div itemprop="name"><strong>' . $author->first_name . ' ' . $author->last_name . '</strong></div>';
-			foreach ( $post_categories as $category ) {
-				$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
-				if ( $meta ) {
-					$bios[] = $meta;
-					$widget .= '<div itemprop="description">' . $meta . '</div>';
-				}
-			}
+		foreach ( $bios as $bio ) {
+			$widget .= '<div itemprop="description">' . $bio . '</div>';
+		}
 		$widget .= '</div>';
 
 		// After widget hook.
