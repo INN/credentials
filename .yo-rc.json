@@ -1,7 +1,7 @@
 {
   "generator-plugin-wp": {
     "name": "Subject Expertise Bios",
-    "homepage": "http://webdevstudios.com",
+    "homepage": "https://github.com/INN/Subject-Expertise-Bios",
     "description": "Taxonomy-specific bios for post authors",
     "version": "1.0.0",
     "author": "inn_nerds",

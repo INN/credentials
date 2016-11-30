@@ -1,6 +1,6 @@
 # Subject Expertise Bios #
 **Contributors:**      inn_nerds  
-**Donate link:**       http://webdevstudios.com  
+**Donate link:**
 **Tags:**  
 **Requires at least:** 4.4  
 **Tested up to:**      4.6.1 

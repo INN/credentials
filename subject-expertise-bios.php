@@ -1,17 +1,17 @@
 <?php
 /**
  * Plugin Name: Subject Expertise Bios
- * Plugin URI:  http://webdevstudios.com
+ * Plugin URI:  https://github.com/INN/Subject-Expertise-Bios
  * Description: Taxonomy-specific bios for post authors
  * Version:     1.0.0
  * Author:      inn_nerds
  * Author URI:  http://nerds.inn.org
- * Donate link: http://webdevstudios.com
+ * Donate link: 
  * License:     GPLv2
  * Text Domain: subject-expertise-bios
  * Domain Path: /languages
  *
- * @link http://webdevstudios.com
+ * @link https://github.com/INN/Subject-Expertise-Bios
  *
  * @package Subject Expertise Bios
  * @version 1.0.0
@@ -158,6 +158,7 @@ final class Subject_Expertise_Bios {
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
 		$this->admin = new SEB_Admin( $this );
+		require( self::dir( 'includes/class-author-topic-bio-post.php' ) );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
