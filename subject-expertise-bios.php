@@ -158,7 +158,8 @@ final class Subject_Expertise_Bios {
 	public function plugin_classes() {
 		// Attach other plugin classes to the base plugin class.
 		$this->admin = new SEB_Admin( $this );
-		require( self::dir( 'includes/class-author-topic-bio-post.php' ) );
+		require( self::dir( 'includes/class-widget-author-topic-bio.php' ) );
+		require( self::dir( 'includes/class-widget-author-topic-bio-post.php' ) );
 	} // END OF PLUGIN CLASSES FUNCTION
 
 	/**
