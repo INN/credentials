@@ -2,14 +2,14 @@
 /**
  * Subject Expertise Bios Author Topic Bio (post)
  *
- * @since NEXT
+ * @since 1.0.0
  * @package Subject Expertise Bios
  */
 
 /**
  * Subject Expertise Bios Author Topic Bio (post) class.
  *
- * @since NEXT
+ * @since 1.0.0
  */
 class SEB_Author_Topic_Bio extends WP_Widget {
 
@@ -19,7 +19,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	 * Will also serve as the widget class.
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $widget_slug = 'subject-expertise-bios-author-topic-bio';
 
@@ -29,7 +29,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	 * Set in __construct since __() shouldn't take a variable.
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $widget_name = '';
 
@@ -39,7 +39,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	 * Set in __construct since __() shouldn't take a variable.
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $default_widget_title = '';
 
@@ -48,7 +48,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	 * Shortcode name for this widget
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected static $shortcode = 'subject-expertise-bios-author-topic-bio-post';
 
@@ -56,7 +56,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	/**
 	 * Construct widget class.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function __construct() {
@@ -86,7 +86,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	 * Note: Could also delete any transients
 	 * delete_transient( 'some-transient-generated-by-this-widget' );
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function flush_widget_cache() {
@@ -97,7 +97,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	/**
 	 * Front-end display of widget.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  array $args     The widget arguments set up when a sidebar is registered.
 	 * @param  array $instance The widget settings as set by user.
 	 * @return void
@@ -116,7 +116,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	/**
 	 * Return the widget/shortcode output
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  array $atts Array of widget/shortcode attributes/args.
 	 * @return string       Widget output
 	 */
@@ -180,7 +180,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	/**
 	 * Update form values as they are saved.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  array $new_instance New settings for this instance as input by the user.
 	 * @param  array $old_instance Old settings for this instance.
 	 * @return array               Settings to save or bool false to cancel saving.
@@ -203,7 +203,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 	/**
 	 * Back-end widget form with defaults.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  array $instance Current settings.
 	 * @return void
 	 */
@@ -225,7 +225,7 @@ class SEB_Author_Topic_Bio extends WP_Widget {
 /**
  * Register this widget with WordPress. Can also move this function to the parent plugin.
  *
- * @since  NEXT
+ * @since  1.0.0
  * @return void
  */
 function subject_expertise_bios_register_author_undefined() {

@@ -88,7 +88,7 @@ module.exports = function( grunt ) {
 						from: /@version(\s*?)[a-zA-Z0-9\.\-\+]+$/m,
 						to: '@version$1' + pkg.version
 				}, {
-						from: /@since(.*?)NEXT/mg,
+						from: /@since(.*?)1.0.0/mg,
 						to: '@since$1' + pkg.version
 				}, {
 						from: /VERSION(\s*?)=(\s*?['"])[a-zA-Z0-9\.\-\+]+/mg,

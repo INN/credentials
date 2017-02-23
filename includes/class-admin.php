@@ -2,28 +2,28 @@
 /**
  * Subject Expertise Bios Admin
  *
- * @since NEXT
+ * @since 1.0.0
  * @package Subject Expertise Bios
  */
 
 /**
  * Subject Expertise Bios Admin.
  *
- * @since NEXT
+ * @since 1.0.0
  */
 class SEB_Admin {
 	/**
 	 * Parent plugin class
 	 *
 	 * @var   Subject_Expertise_Bios
-	 * @since NEXT
+	 * @since 1.0.0
 	 */
 	protected $plugin = null;
 
 	/**
 	 * Constructor
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  Subject_Expertise_Bios $plugin Main plugin object.
 	 * @return void
 	 */
@@ -126,7 +126,7 @@ class SEB_Admin {
 	/**
 	 * Initiate our hooks
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function hooks() {

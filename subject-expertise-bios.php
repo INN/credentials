@@ -43,7 +43,7 @@
 /**
  * Autoloads files with classes when needed
  *
- * @since  NEXT
+ * @since  1.0.0
  * @param  string $class_name Name of the class being requested.
  * @return void
  */
@@ -64,7 +64,7 @@ spl_autoload_register( 'subject_expertise_bios_autoload_classes' );
 /**
  * Main initiation class
  *
- * @since  NEXT
+ * @since  1.0.0
  */
 final class Subject_Expertise_Bios {
 
@@ -72,7 +72,7 @@ final class Subject_Expertise_Bios {
 	 * Current version
 	 *
 	 * @var  string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	const VERSION = '1.0.0';
 
@@ -80,7 +80,7 @@ final class Subject_Expertise_Bios {
 	 * URL of plugin directory
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $url = '';
 
@@ -88,7 +88,7 @@ final class Subject_Expertise_Bios {
 	 * Path of plugin directory
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $path = '';
 
@@ -96,7 +96,7 @@ final class Subject_Expertise_Bios {
 	 * Plugin basename
 	 *
 	 * @var string
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $basename = '';
 
@@ -104,7 +104,7 @@ final class Subject_Expertise_Bios {
 	 * Detailed activation error messages
 	 *
 	 * @var array
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected $activation_errors = array();
 
@@ -112,14 +112,14 @@ final class Subject_Expertise_Bios {
 	 * Singleton instance of plugin
 	 *
 	 * @var Subject_Expertise_Bios
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected static $single_instance = null;
 
 	/**
 	 * Instance of SEB_Admin
 	 *
-	 * @since NEXT
+	 * @since 1.0.0
 	 * @var SEB_Admin
 	 */
 	protected $admin;
@@ -127,7 +127,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return Subject_Expertise_Bios A single instance of this class.
 	 */
 	public static function get_instance() {
@@ -141,7 +141,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Sets up our plugin
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 */
 	protected function __construct() {
 		$this->basename = plugin_basename( __FILE__ );
@@ -152,7 +152,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Attach other plugin classes to the base plugin class.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function plugin_classes() {
@@ -165,7 +165,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Add hooks and filters
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function hooks() {
@@ -179,7 +179,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Activate the plugin
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function _activate() {
@@ -191,7 +191,7 @@ final class Subject_Expertise_Bios {
 	 * Deactivate the plugin
 	 * Uninstall routines should be in uninstall.php
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function _deactivate() {}
@@ -199,7 +199,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Init hooks
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function init() {
@@ -219,7 +219,7 @@ final class Subject_Expertise_Bios {
 	 * Check if the plugin meets requirements and
 	 * disable it if they are not present.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return boolean result of meets_requirements
 	 */
 	public function check_requirements() {
@@ -240,7 +240,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Deactivates this plugin, hook this function on admin_init.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function deactivate_me() {
@@ -254,7 +254,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Check that all plugin requirements are met
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return boolean True if requirements are met.
 	 */
 	public function meets_requirements() {
@@ -268,7 +268,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Adds a notice to the dashboard if the plugin requirements are not met
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function requirements_not_met_notice() {
@@ -298,7 +298,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Magic getter for our object.
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param string $field Field to get.
 	 * @throws Exception Throws an exception if the field is invalid.
 	 * @return mixed
@@ -320,7 +320,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * Include a file from the includes directory
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  string $filename Name of the file to be included.
 	 * @return bool   Result of include call.
 	 */
@@ -335,7 +335,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * This plugin's directory
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  string $path (optional) appended path.
 	 * @return string       Directory and path
 	 */
@@ -348,7 +348,7 @@ final class Subject_Expertise_Bios {
 	/**
 	 * This plugin's url
 	 *
-	 * @since  NEXT
+	 * @since  1.0.0
 	 * @param  string $path (optional) appended path.
 	 * @return string       URL and path
 	 */
@@ -363,7 +363,7 @@ final class Subject_Expertise_Bios {
  * Grab the Subject_Expertise_Bios object and return it.
  * Wrapper for Subject_Expertise_Bios::get_instance()
  *
- * @since  NEXT
+ * @since  1.0.0
  * @return Subject_Expertise_Bios  Singleton instance of plugin class.
  */
 function subject_expertise_bios() {
