@@ -14,7 +14,7 @@
 
 This plugin was created as a part of the Trust Project Challenge hosted by the BBC Connected Studio in Fall 2016 as a collaboration between INN and BBC team members.
 
-Add your credentials to post categories and display them on your site using widgets.
+Add author credentials to post categories and display them on your site using widgets.
 
 ## Installation ##
 
