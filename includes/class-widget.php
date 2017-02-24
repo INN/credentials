@@ -175,7 +175,7 @@ class C_Author_Credentials_Widget extends WP_Widget {
 
 		} elseif ( is_category() ) {
 			// Category Archive.
-
+			return;
 		} elseif ( is_single() ) {
 			// Single Post.
 			global $post;
