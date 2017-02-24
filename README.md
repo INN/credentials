@@ -10,7 +10,7 @@
 
 ## Description ##
 
-*This plugin is still in development and is not recommended for use on production sites*
+**This plugin is still in development and is not recommended for use on production sites**
 
 This plugin was created as a part of the Trust Project Challenge hosted by the BBC Connected Studio in Fall 2016 as a collaboration between INN and BBC team members.
 
