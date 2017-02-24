@@ -8,10 +8,10 @@ class BaseTest extends WP_UnitTestCase {
 	}
 
 	function test_class_exists() {
-		$this->assertTrue( class_exists( 'Subject_Expertise_Bios') );
+		$this->assertTrue( class_exists( 'Credentials') );
 	}
 	
 	function test_get_instance() {
-		$this->assertTrue( subject_expertise_bios() instanceof Subject_Expertise_Bios );
+		$this->assertTrue( credentials() instanceof Credentials );
 	}
 }

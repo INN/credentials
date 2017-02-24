@@ -1,21 +1,21 @@
 <?php
 /**
- * Subject Expertise Bios Admin
+ * Credentials Admin
  *
  * @since 1.0.0
- * @package Subject Expertise Bios
+ * @package Credentials
  */
 
 /**
- * Subject Expertise Bios Admin.
+ * Credentials Admin.
  *
  * @since 1.0.0
  */
-class SEB_Admin {
+class C_Admin {
 	/**
 	 * Parent plugin class
 	 *
-	 * @var   Subject_Expertise_Bios
+	 * @var   Credentials
 	 * @since 1.0.0
 	 */
 	protected $plugin = null;
@@ -24,7 +24,7 @@ class SEB_Admin {
 	 * Constructor
 	 *
 	 * @since  1.0.0
-	 * @param  Subject_Expertise_Bios $plugin Main plugin object.
+	 * @param  Credentials $plugin Main plugin object.
 	 * @return void
 	 */
 	public function __construct( $plugin ) {
@@ -33,13 +33,27 @@ class SEB_Admin {
 	}
 
 	/**
+	 * Initiate our hooks
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function hooks() {
+		add_action( 'show_user_profile', array( $this, 'profile_expertise_display' ) );
+		add_action( 'edit_user_profile', array( $this, 'profile_expertise_display' ) );
+		add_action( 'personal_options_update', array( $this, 'profile_expertise_save' ) );
+		add_action( 'edit_user_profile_update', array( $this, 'profile_expertise_save' ) );
+	}
+
+	/**
 	 * Display Subject Expertise
 	 *
 	 * @since    1.0.0
+	 * @param $user
 	 */
 	public function profile_expertise_display( $user ) {
 		global $wpdb;
-		
+
 		if ( isset( $_GET['user_id'] ) ) {
 			$user_id = $_GET['user_id'];
 		} else {
@@ -121,18 +135,5 @@ class SEB_Admin {
 		return false;
 
 		update_usermeta( absint( $user_id ), 'term_' . $_POST['category'] . '_bio', wp_kses_post( $_POST['topic_bio'] ) );
-	}
-
-	/**
-	 * Initiate our hooks
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	public function hooks() {
-		add_action( 'show_user_profile', array( $this, 'profile_expertise_display' ) );
-		add_action( 'edit_user_profile', array( $this, 'profile_expertise_display' ) );
-		add_action( 'personal_options_update', array( $this, 'profile_expertise_save' ) );
-		add_action( 'edit_user_profile_update', array( $this, 'profile_expertise_save' ) );
 	}
 }

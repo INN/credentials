@@ -1,6 +1,6 @@
 {
-  "name": "subject-expertise-bios",
-  "description": "Taxonomy-specific bios for post authors",
+  "name": "credentials",
+  "description": "Add your credentials to post categories and display them on your site using widgets.",
   "license": "GPLv2",
   "authors": [
     "inn_nerds"

@@ -1,6 +1,6 @@
 <?php
 
-class C_Admin_Test extends WP_UnitTestCase {
+class C_Widget_Test extends WP_UnitTestCase {
 
 	function test_sample() {
 		// replace this with some actual testing code
@@ -8,10 +8,10 @@ class C_Admin_Test extends WP_UnitTestCase {
 	}
 
 	function test_class_exists() {
-		$this->assertTrue( class_exists( 'C_Admin') );
+		$this->assertTrue( class_exists( 'C_Widget') );
 	}
 
 	function test_class_access() {
-		$this->assertTrue( credentials()->admin instanceof C_Admin );
+		$this->assertTrue( credentials()->widget instanceof C_Widget );
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-class SEB_Author_Topic_Bio_(post)_Test extends WP_UnitTestCase {
+class C_Author_Credentials_Test extends WP_UnitTestCase {
 
 	function test_sample() {
 		// replace this with some actual testing code
@@ -8,6 +8,6 @@ class SEB_Author_Topic_Bio_(post)_Test extends WP_UnitTestCase {
 	}
 
 	function test_class_exists() {
-		$this->assertTrue( class_exists( 'SEB_Author_Topic_Bio_(post)') );
+		$this->assertTrue( class_exists( 'C_Author_Credentials') );
 	}
 }

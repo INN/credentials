@@ -1,18 +1,18 @@
 {
   "generator-plugin-wp": {
-    "name": "Subject Expertise Bios",
-    "homepage": "https://github.com/INN/Subject-Expertise-Bios",
-    "description": "Taxonomy-specific bios for post authors",
+    "name": "Credentials",
+    "homepage": "https://nerds.inn.org",
+    "description": "Add your credentials to post categories and display them on your site using widgets.",
     "version": "1.0.0",
     "author": "inn_nerds",
     "authoremail": "nerds@inn.org",
-    "authorurl": "http://nerds.inn.org",
+    "authorurl": "htts://nerds.inn.org",
     "license": "GPLv2",
-    "slug": "subject-expertise-bios",
-    "classname": "Subject_Expertise_Bios",
-    "classprefix": "SEB_",
-    "prefix": "subject_expertise_bios",
-    "year": 2016,
-    "currentVersionWP": "4.6.1"
+    "slug": "credentials",
+    "classname": "Credentials",
+    "classprefix": "C_",
+    "prefix": "credentials",
+    "year": 2017,
+    "currentVersionWP": "4.7.2"
   }
 }

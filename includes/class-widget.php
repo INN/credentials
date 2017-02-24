@@ -1,17 +1,17 @@
 <?php
 /**
- * Subject Expertise Bios Author Topic Bio (post)
+ * Credentials Author Credentials
  *
  * @since 1.0.0
- * @package Subject Expertise Bios
+ * @package Credentials
  */
 
 /**
- * Subject Expertise Bios Author Topic Bio (post) class.
+ * Credentials Author Credentials class.
  *
  * @since 1.0.0
  */
-class SEB_Author_Topic_Bio_post extends WP_Widget {
+class C_Author_Credentials_Widget extends WP_Widget {
 
 	/**
 	 * Unique identifier for this widget.
@@ -21,7 +21,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 * @var string
 	 * @since  1.0.0
 	 */
-	protected $widget_slug = 'subject-expertise-bios-author-topic-bio-post';
+	protected $widget_slug = 'author-credentials';
 
 
 	/**
@@ -50,7 +50,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 * @var string
 	 * @since  1.0.0
 	 */
-	protected static $shortcode = 'subject-expertise-bios-author-topic-bio-post';
+	protected static $shortcode = 'author-credentials';
 
 
 	/**
@@ -61,15 +61,15 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 */
 	public function __construct() {
 
-		$this->widget_name          = esc_html__( 'Subject Expertise Post Bios', 'subject-expertise-bios' );
-		$this->default_widget_title = esc_html__( 'Subject Expertise Post Bios', 'subject-expertise-bios' );
+		$this->widget_name          = esc_html__( 'Author Credentials', 'credentials' );
+		$this->default_widget_title = esc_html__( 'Author Credentials', 'credentials' );
 
 		parent::__construct(
 			$this->widget_slug,
 			$this->widget_name,
 			array(
 				'classname'   => $this->widget_slug,
-				'description' => esc_html__( 'A widget boilerplate description.', 'subject-expertise-bios' ),
+				'description' => esc_html__( 'A widget boilerplate description.', 'credentials' ),
 			)
 		);
 
@@ -109,6 +109,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 			'before_title'  => $args['before_title'],
 			'after_title'   => $args['after_title'],
 			'title'         => $instance['title'],
+			'text'          => $instance['text'],
 		) );
 	}
 
@@ -122,20 +123,6 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 	 */
 	public static function get_widget( $atts ) {
 		$widget = '';
-		global $post;
-
-		$post_categories =  wp_get_post_categories( $post->ID );
-
-		foreach ( $post_categories as $category ) {
-			$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
-			if ( $meta ) {
-				$bios[] = $meta;
-			}
-		}
-
-		if ( empty( count( $bios ) ) || ! is_single() ) {
-			return;
-		}
 
 		// Set up default values for attributes.
 		$atts = shortcode_atts(
@@ -145,6 +132,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 				'before_title'  => '',
 				'after_title'   => '',
 				'title'         => '',
+				'text'          => '',
 			),
 			(array) $atts,
 			self::$shortcode
@@ -156,13 +144,63 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		// Title.
 		$widget .= ( $atts['title'] ) ? $atts['before_title'] . esc_html( $atts['title'] ) . $atts['after_title'] : '';
 
+		if ( is_author() ) {
+			// Author Archive.
+			global $post;
 
-		$author = get_userdata( $post->post_author );
-		$widget .= '<div itemscope itemtype="http://schema.org/Person">';
-		$widget .= '<div itemprop="name"><strong>' . $author->first_name . ' ' . $author->last_name . '</strong></div>';
-		foreach ( $bios as $bio ) {
-			$widget .= '<div itemprop="description">' . $bio . '</div>';
+			$args = array( "hide_empty" => 0 );
+			foreach ( get_categories( $args ) as $category ) {
+				$meta = get_user_meta( $post->post_author, 'term_' . $category->term_id . '_bio', true );
+				if ( $meta ) {
+					$bios[$category->term_id] = array(
+						'term_id' => $category->term_id,
+						'term_name' => $category->name,
+						'bio' => $meta
+					);
+				}
+			}
+
+			if ( empty( count( $bios ) ) ) {
+				return;
+			}
+
+			$author = get_userdata( $post->post_author );
+			$widget .= '<div itemscope itemtype="http://schema.org/Person">';
+			$widget .= '<div itemprop="name">' . $author->first_name . ' ' . $author->last_name . ' has experience in the following areas:</div>';
+				$widget .= '<ul>';
+				foreach ( $bios as $bio ) {
+					$widget .= '<li><strong>' . $bio['term_name'] . '</strong><br /><div itemprop="description">' . $bio['bio'] . '</div></li>';
+				}
+				$widget .= '</ul>';
+
+		} elseif ( is_category() ) {
+			// Category Archive.
+
+		} elseif ( is_single() ) {
+			// Single Post.
+			global $post;
+
+			$post_categories =  wp_get_post_categories( $post->ID );
+
+			foreach ( $post_categories as $category ) {
+				$meta = get_user_meta( $post->post_author, 'term_' . $category . '_bio', true );
+				if ( $meta ) {
+					$bios[] = $meta;
+				}
+			}
+
+			if ( empty( count( $bios ) ) ) {
+				return;
+			}
+
+			$author = get_userdata( $post->post_author );
+			$widget .= '<div itemscope itemtype="http://schema.org/Person">';
+			$widget .= '<div itemprop="name"><strong>' . $author->first_name . ' ' . $author->last_name . '</strong></div>';
+			foreach ( $bios as $bio ) {
+				$widget .= '<div itemprop="description">' . $bio . '</div>';
+			}
 		}
+
 		$widget .= '</div>';
 
 		// After widget hook.
@@ -188,6 +226,13 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		// Sanitize title before saving to database.
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
+		// Sanitize text before saving to database.
+		if ( current_user_can( 'unfiltered_html' ) ) {
+			$instance['text'] = force_balance_tags( $new_instance['text'] );
+		} else {
+			$instance['text'] = stripslashes( wp_filter_post_kses( addslashes( $new_instance['text'] ) ) );
+		}
+
 		// Flush cache.
 		$this->flush_widget_cache();
 
@@ -210,7 +255,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
 		);
 
 		?>
-		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'subject-expertise-bios' ); ?></label>
+		<p><label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'credentials' ); ?></label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" placeholder="optional" /></p>
 		<?php
 	}
@@ -223,7 +268,7 @@ class SEB_Author_Topic_Bio_post extends WP_Widget {
  * @since  1.0.0
  * @return void
  */
-function subject_expertise_bios_register_undefined() {
-	register_widget( 'SEB_Author_Topic_Bio_post' );
+function credentials_register_undefined() {
+	register_widget( 'C_Author_Credentials_Widget' );
 }
-add_action( 'widgets_init', 'subject_expertise_bios_register_undefined' );
+add_action( 'widgets_init', 'credentials_register_undefined' );

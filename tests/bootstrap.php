@@ -9,10 +9,10 @@ require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
 	// Include the REST API main plugin file if we're using it so we can run endpoint tests.
-	if ( class_exists( 'WP_REST_Controller' ) ) {
+	if ( class_exists( 'WP_REST_Controller' ) && file_exists( WP_PLUGIN_DIR . '/rest-api/plugin.php' ) ) {
 		require WP_PLUGIN_DIR . '/rest-api/plugin.php';
 	}
-	require dirname( dirname( __FILE__ ) ) . '/subject-expertise-bios.php';
+	require dirname( dirname( __FILE__ ) ) . '/credentials.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
